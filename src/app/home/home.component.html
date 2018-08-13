@@ -1,5 +1,13 @@
 <div>
-  <div *ngFor="let weather of weatherData">
-    <app-weather [data]="weather"></app-weather>
+  <div class="btn-group" role="group" aria-label="Basic example" style="position:relative; left:90%; margin-top:10px">
+    <button type="button" class="btn btn-outline-secondary" (click)="changeMode('gride')">
+      <img src="../../assets/grid-icon.png" style="width:25px; height:25px;"/>
+    </button>
+    <button type="button" class="btn btn-outline-secondary" (click)="changeMode('wide')">
+        <img src="../../assets/list-icon.png" style="width:25px; height:25px;"/>
+    </button>
+  </div>
+  <div *ngFor="let city of cities" >
+    <app-weather [city]="city" [mode]="mode"></app-weather>
   </div>
 </div>

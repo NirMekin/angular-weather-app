@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { WeatherService } from '../services/weather.service';
 import { WeatherComponent } from '../weather/weather.component';
+import { City } from '../services/icity'
+import { Output } from '@angular/core/';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +13,23 @@ import { WeatherComponent } from '../weather/weather.component';
 })
 export class HomeComponent implements OnInit {
 
-  public  weatherData = [];
-  private initCities : string[] = ['London','Tel%20Aviv','New%20York','Hong%20Kong'];
+  public  cities : City[];
+  // @Output() mode = new EventEmitter();
+  @Output() mode : string;
 
   constructor( private weatherService : WeatherService ) { }
 
   ngOnInit() {
-    this.initCities.forEach( city => {
-      this.weatherService.getCityInfo(city)
-      .subscribe( data => {
-        console.log(data)
-        this.weatherData.push(data)
-      })
+    // this.mode.emit("grid");
+    this.mode = "grid";
+    this.weatherService.getCities()
+    .subscribe( data => {
+      this.cities = data;
     })
+  }
+
+  changeMode(mode){
+    this.mode = mode;
   }
 
 }

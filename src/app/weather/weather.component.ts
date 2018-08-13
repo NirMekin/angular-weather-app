@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
+import { WeatherService } from 'src/app/services/weather.service';
 
 @Component({
   selector: 'app-weather',
@@ -7,26 +8,35 @@ import { Input } from '@angular/core';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-  @Input() data : any;
-  private backgroundColor : string;
-  private fontColor : string;
-  private openModalFlag : string = 'none';
-  private styleObj = {}
-  constructor() { }
+  @Input() city : string;
+  @Input() mode : string;
+  private data : any;
+  private styleObj = {};
+  private modal : boolean = false;
+  private displayStyle : string  = 'block';
+
+  constructor(private weatherService: WeatherService) { }
 
   ngOnInit() {
-    let h = Math.random() * 500 ;
+    console.log(this.mode)
+      this.weatherService.getCityInfo(this.city)
+      .subscribe( data => {
+        console.log(data)
+          this.data = data;
+      })
+    let h = 200;
     let s = '100%';
     let l = Math.random() * 100  ;
     this.styleObj['background-color'] = `hsl(${h},${s},${l}%)`;
     this.styleObj['color'] = l < 50 ? 'white' : 'black';
-    this.styleObj['border'] = `1px hsl(${h},${s},${100-l}%) solid`;
-    
+    this.styleObj['border-color'] = `hsl(${h},${s},${100-l}%)`; 
 
   }
+
+  get classList() : string { return this.mode == 'gride' ? 'weather-container-grid' : 'weather-container-wide'}
 
   openModal(){
-    console.log("test")
-    this.openModalFlag =  this.openModalFlag =='block' ? 'none' : 'block';
+    this.modal = true;
   }
+
 }
