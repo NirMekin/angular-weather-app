@@ -12,7 +12,7 @@ export class WeatherComponent implements OnInit {
   @Input() mode : string;
   private data : any;
   private styleObj = {};
-  private modal : boolean = false;
+  private modal : string = "weather";
   private displayStyle : string  = 'block';
 
   constructor(private weatherService: WeatherService) { }
@@ -35,8 +35,5 @@ export class WeatherComponent implements OnInit {
 
   get classList() : string { return this.mode == 'gride' ? 'weather-container-grid' : 'weather-container-wide'}
 
-  openModal(){
-    this.modal = true;
-  }
 
 }

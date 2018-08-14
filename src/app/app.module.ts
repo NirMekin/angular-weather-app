@@ -14,6 +14,7 @@ import { HistoryComponent } from './history/history.component';
 import { WeatherService } from './services/weather.service';
 import { WeatherComponent } from './weather/weather.component';
 import { ModalComponent } from './modal/modal.component';
+import { HistoryTileComponent } from './history/history-tile/history-tile.component';
 
 
 
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     SearchComponent,
     HistoryComponent,
     WeatherComponent,
-    ModalComponent
+    ModalComponent,
+    HistoryTileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,10 @@
 
-<div *ngIf="data" [ngClass]="classList" [ngStyle]="styleObj" (click)="openModal()">
+<!-- <div *ngIf="data" [ngClass]="classList" [ngStyle]="styleObj" (click)="openModal()">
   <h3>
       {{data.name}}
   </h3>
-</div>
+</div> -->
 
-<app-modal *ngIf="modal"
-            [name] = "data.name"
-            [country] = "data.sys.country"
-            [weather] = "data.main"
-            [displayStyle] = "modal"
->
-</app-modal>
+<app-modal *ngIf = "data" [data] = "data" [modal]="modal" [ngClass]="classList" [ngStyle]="styleObj" ></app-modal>
 
 
