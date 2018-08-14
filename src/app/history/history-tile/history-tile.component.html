@@ -1,0 +1,6 @@
+<div *ngIf="display" class="historyTileContainer">
+  <p>
+    {{message}} 
+    <button type="button" class="btn btn-danger btn-sm" (click)="removeHistory(message)">Delete</button>
+  </p> 
+</div>

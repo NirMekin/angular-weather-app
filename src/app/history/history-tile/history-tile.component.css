@@ -1,0 +1,17 @@
+.historyTileContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.historyTileContainer p{
+    align-content: space-around;
+    width: 50%;
+    font-size: 120%;
+    color: blue;
+    border: 1px solid blue;
+    text-align: center;
+}
+
+.historyTileContainer .btn-danger{
+    float:right;
+}
